@@ -1,0 +1,52 @@
+<!--<h1>Sign Up</h1>-->
+<%#= form_for @user do |f|%>
+<!--  <%#= f.label :username%><br>-->
+<!--  <%#= f.text_field :username%><br>-->
+<!--  <%#= f.label :password%><br>-->
+<!--  <%#= f.password_field :password%><br>-->
+<%#= f.submit %>
+<%#end%>
+<%#= button_to "Back to Login", '/login', method: :get%>
+
+
+<div class="container" style="width: 30%;">
+  <h2>Signup Form</h2>
+</div>
+
+<%= form_tag users_path do %>
+
+  <% flash.each do |type, msg| %>
+    <div class="alert alert-info">
+      <%= msg %>
+    </div>
+  <% end %>
+
+  <div class="container" style="width: 30%;">
+    <%= label_tag :username%>
+    <%= text_field_tag :username %>
+
+    <%= label_tag :password%>
+    <%= password_field_tag :password%>
+
+    <!--    <label>-->
+    <!--      <input type="checkbox" checked="checked" name="remember"> Remember me-->
+    <!--    </label>-->
+    <div class="col-lg-12">
+      <div class="input-group">
+      <span class="input-group-addon">
+        Please select if you want to be an admin.
+        <%= check_box_tag :calls_check, 1, false %>
+      </span>
+      </div><!-- /input-group -->
+    </div>
+  </div>
+  <div class="media-middle text-center">
+    <button type="submit">Sign Up</button><br>
+    <a class="text-white" href="/login">Back to Login</a>
+  </div>
+
+  <!--  <div class="container" style="background-color:#f1f1f1">-->
+  <!--    <button type="button" class="cancelbtn">Cancel</button>-->
+  <!--    <span class="psw">Forgot <a href="#">password?</a></span>-->
+  <!--  </div>-->
+<%end%>

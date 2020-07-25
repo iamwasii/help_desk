@@ -1,0 +1,53 @@
+<%#= button_to "Log out", '/login', method: :get%>
+<!--<h1>Welcome</h1>-->
+<%# if logged_in? %>
+<!--  <h1>You are Logged In, <%#= current_user.username %></h1>-->
+<!--  <h2>Please enter your tickets if you want to</h2>-->
+<%#end%>
+<%#= form_tag '/tickets-create' do %>
+<%#= label_tag :subject%>
+<%#= text_field_tag :subject %>
+<%#= label_tag :body%>
+<%#= text_field_tag :body%>
+<%#= submit_tag "Save"%>
+<%#end%>
+<%#= button_to "Show All tickets", '/tickets-all', method: :get%>
+
+
+<h2>Welcome</h2>
+<ul class="nav nav-tabs">
+  <li role="presentation"><a href="/login">Logout</a></li>
+</ul>
+
+<%= form_tag tickets_path do %>
+  <% flash.each do |type, msg| %>
+    <div class="alert alert-info">
+      <%= msg %>
+    </div>
+  <% end %>
+
+  <div class="container" >
+    <% if logged_in? %>
+      <h2>Please Generate Your Tickets With Respect To Your Department</h2>
+    <%end%>
+    <div class="container" style="width: 30%;">
+      <label for="subject"><b>Subject</b></label>
+      <%= text_field_tag :subject %>
+
+
+      <label for="body"><b>Body</b></label>
+      <%= text_field_tag :body%>
+      <%= select_tag 'department_name', options_for_select(@departments.collect{ |d| [d.name] }) %>
+
+    </div>
+  </div>
+  <div class="media-middle text-center">
+    <button type="submit">Generate</button><br>
+  </div>
+<%end%>
+<div class="media-middle text-center">
+<%= form_tag tickets_path, method: :get do %>
+  <button style="width: 20%;">Show All Tickets</button>
+<%end%>
+</div>
+

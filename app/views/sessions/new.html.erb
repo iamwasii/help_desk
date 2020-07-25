@@ -1,0 +1,41 @@
+<!--<h1>Login</h1>-->
+<%#= form_tag '/login' do %>
+  <%#= label_tag :username%>
+  <%#= text_field_tag :username %>
+  <%#= label_tag :password%>
+  <%#= password_field_tag :password%>
+  <%#= submit_tag "Login"%>
+<%#end%>
+<%#= button_to "Sign Up", '/users/new', method: :get%>
+
+
+<div class="container" style="width: 30%;">
+  <h2>Login Form</h2>
+</div>
+
+<%= form_tag login_path do %>
+
+  <div class="container" style="width: 30%;">
+    <%= label_tag :username%>
+    <%= text_field_tag :username %>
+
+    <%= label_tag :password%>
+    <%= password_field_tag :password%>
+
+
+<!--    <label>-->
+<!--      <input type="checkbox" checked="checked" name="remember"> Remember me-->
+<!--    </label>-->
+  </div>
+  <div class="media-middle text-center">
+    <!-- /.row -->
+    <button type="submit">Login</button><br>
+    <a class="text-white" href="/users/new">Don't have an account?</a>
+  </div>
+
+<!--  <div class="container" style="background-color:#f1f1f1">-->
+<!--    <button type="button" class="cancelbtn">Cancel</button>-->
+<!--    <span class="psw">Forgot <a href="#">password?</a></span>-->
+<!--  </div>-->
+<%end%>
+
