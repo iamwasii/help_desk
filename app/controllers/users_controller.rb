@@ -5,6 +5,15 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def index
+    @users = User.all
+  end
+
+  def show
+    @tickets = Ticket.where(user_id: params[:id])
+    render 'show'
+  end
+
   def create
     @username = params.permit(:username)['username']
     unless User.exists?(username: @username)

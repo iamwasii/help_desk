@@ -1,0 +1,69 @@
+<!--<h1>Listing Tickets</h1>-->
+
+<!--<table>-->
+<!--  <tr>-->
+<!--    <th>Subject</th>-->
+<!--    <th>Body</th>-->
+<!--    <th colspan="2"></th>-->
+<!--  </tr>-->
+
+<%# @tickets.each do |ticket| %>
+<!--    <tr>-->
+<!--      <td><%#= ticket.subject %></td>-->
+<!--      <td><%#= ticket.body %></td>-->
+<!--    </tr>-->
+<%# end %>
+<!--</table>-->
+
+<%#= button_to "Back", '/welcome', method: :get%>
+
+
+
+
+<h2>Listing Departments</h2>
+<ul class="nav nav-tabs">
+  <li class="text-right" role="presentation"><a href="/login">Logout</a></li>
+</ul>
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %>
+
+<%= form_tag 'department-show', method: :get do %>
+
+  <div class="container">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Tickets Generated</th>
+        <th colspan="2"></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @departments.each do |department| %>
+        <tr>
+          <td><%= department.name %></td>
+          <td><%= Ticket.where(:department_id => department.id).count() %></td>
+          <td><%= link_to "Destroy", {action: :destroy, id: department.id}, method: :delete %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+
+    <!--    <label>-->
+    <!--      <input type="checkbox" checked="checked" name="remember"> Remember me-->
+    <!--    </label>-->
+  </div>
+  <div class="text-center">
+    <button type="submit">Back</button>
+  </div>
+
+  <!--  <div class="container" style="background-color:#f1f1f1">-->
+  <!--    <button type="button" class="cancelbtn">Cancel</button>-->
+  <!--    <span class="psw">Forgot <a href="#">password?</a></span>-->
+  <!--  </div>-->
+<%end%>

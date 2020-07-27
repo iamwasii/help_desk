@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :index, :show]
   resources :tickets, only: [:new, :show, :create, :destroy, :index]
   # resources :sessions, only: [:new, :create]
   get 'login', to: 'sessions#new'

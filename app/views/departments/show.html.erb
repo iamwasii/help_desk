@@ -1,0 +1,53 @@
+<!--<h1>Listing Tickets</h1>-->
+
+<!--<table>-->
+<!--  <tr>-->
+<!--    <th>Subject</th>-->
+<!--    <th>Body</th>-->
+<!--    <th colspan="2"></th>-->
+<!--  </tr>-->
+
+<!--  <tr>-->
+<!--    <td><%#= @ticket.subject %></td>-->
+<!--    <td><%#= @ticket.body %></td>-->
+<!--  </tr>-->
+<!--</table>-->
+
+<%#= button_to "Back", '/welcome', method: :get%>
+
+
+
+<h2>Department Saved!</h2>
+<ul class="nav nav-tabs">
+  <li role="presentation"><a href="/login">Logout</a></li>
+</ul>
+
+<%= form_tag 'admin-welcome', method: :get do %>
+
+  <div class="container">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th colspan="2"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @department.name %></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <button type="submit">Back</button>
+    <!--    <label>-->
+    <!--      <input type="checkbox" checked="checked" name="remember"> Remember me-->
+    <!--    </label>-->
+  </div>
+
+  <!--  <div class="container" style="background-color:#f1f1f1">-->
+  <!--    <button type="button" class="cancelbtn">Cancel</button>-->
+  <!--    <span class="psw">Forgot <a href="#">password?</a></span>-->
+  <!--  </div>-->
+<%end%>
+
