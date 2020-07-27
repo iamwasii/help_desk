@@ -41,8 +41,8 @@ class DepartmentsController < ApplicationController
     if params[:search].blank?
       redirect_to('/department-show', alert: "Empty field!")
     else
-      if Department.find_by(name: params[:search])
-        @departments = Department.where(name: params[:search])
+      if Department.where("name LIKE ?", "%" + params[:search] + "%")
+        @departments = Department.where("name LIKE ?", "%" + params[:search] + "%")
         render 'search', alert: "Search Results!"
       else
         redirect_to('/department-show', alert: "Not Found!")

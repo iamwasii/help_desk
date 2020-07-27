@@ -1,0 +1,45 @@
+<%#= button_to "Log out", '/login', method: :get%>
+<!--<h1>Welcome</h1>-->
+<%# if logged_in? %>
+<!--  <h1>You are Logged In, <%#= current_user.username %></h1>-->
+<!--  <h2>Please enter your tickets if you want to</h2>-->
+<%#end%>
+<%#= form_tag '/tickets-create' do %>
+<%#= label_tag :subject%>
+<%#= text_field_tag :subject %>
+<%#= label_tag :body%>
+<%#= text_field_tag :body%>
+<%#= submit_tag "Save"%>
+<%#end%>
+<%#= button_to "Show All tickets", '/tickets-all', method: :get%>
+
+
+<h2>Add Department</h2>
+<ul class="nav nav-tabs">
+  <li role="presentation"><a href="/login">Logout</a></li>
+</ul>
+
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %>
+
+<%= form_tag 'department-create', method: :post do %>
+<div class="media-middle text-center">
+  <div class="container" style="width: 30%;">
+  <% if logged_in? %>
+    <%= label_tag :name%>
+    <%= text_field_tag :name %>
+
+  <%end%>
+  </div>
+  <button type="submit">Save</button>
+</div>
+<%end%>
+<%= form_tag 'admin-welcome', method: :get do %>
+  <div class="media-middle text-center">
+    <button type="submit">Back</button>
+  </div>
+<%end%>
+

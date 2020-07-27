@@ -20,45 +20,37 @@
 
 
 
-<h2>Listing Departments</h2>
+<h2>Listing Tickets</h2>
 <ul class="nav nav-tabs">
   <li class="text-right" role="presentation"><a href="/login">Logout</a></li>
 </ul>
-<% flash.each do |type, msg| %>
-  <div class="alert alert-info">
-    <%= msg %>
-  </div>
-<% end %>
-<%= form_tag('/search', :method => "get",
-             class: 'navbar-form navbar-left') do %>
-  <div class="input-group">
-    <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>
-    <div class="input-group-btn">
-      <div class="media-middle text-center">
-      <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>
-    </div>
-    </div>
-  </div>
-<% end %>
 
-<%= form_tag 'admin-welcome', method: :get do %>
+
+<%= form_tag users_path, method: :get do %>
 
   <div class="container">
     <table class="table">
       <thead>
       <tr>
-        <th>Name</th>
-        <th>Tickets Generated</th>
+        <th>Subject</th>
+        <th>Body</th>
+        <th>Department</th>
+        <th>Status</th>
         <th colspan="2"></th>
       </tr>
       </thead>
 
       <tbody>
-      <% @departments.each do |department| %>
+      <% @tickets.each do |ticket| %>
         <tr>
-          <td><%= department.name %></td>
-          <td><%= Ticket.where(:department_id => department.id).count() %></td>
-          <td><%= link_to "Destroy", {action: :destroy, id: department.id}, method: :delete %></td>
+            <td><%= ticket.subject %></td>
+            <td><%= ticket.body %></td>
+            <td><%= Department.find(ticket.department_id).name %></td>
+            <% if ticket.status == true %>
+              <td>Resolved</td>
+            <% else %>
+              <td>Pending</td>
+            <% end %>
         </tr>
       <% end %>
       </tbody>
